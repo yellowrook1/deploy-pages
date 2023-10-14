@@ -1,6 +1,6 @@
-name: 'Deploy GitHub Pages site'
+name: 'Test makretplace action newnewe'
 description: 'A GitHub Action to deploy an artifact as a GitHub Pages site'
-author: 'GitHub'
+author: 'n'
 runs:
   using: 'node16'
   main: 'dist/index.js'
